@@ -28,6 +28,7 @@ jobs:
         run: |
           cd ./TechNews 
           pip install -r requirements.txt
+          playwright install
 
       # Run the Python script with environment variables
       - name: Run tech post generator
