@@ -5,7 +5,7 @@ on:
 #    branches:
 #      - main
   schedule:
-    - cron: '0 */4 * * *'  # Every 4 hours
+    - cron: '*/5 * * * *'  # Every 4 hours
   workflow_dispatch:  # Optional: allows manual trigger from GitHub UI
 
 jobs:
@@ -36,13 +36,3 @@ jobs:
         run: |
           cd ./TechNews  
           python generate_news_post_gemini.py
-
-      # Commit and push changes to the repository (if needed)
-      - name: Commit and push changes
-        run: |
-          cd ./TechNews  
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add _posts/
-          git commit -m "Add news post"
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/rkoots/rkoots.github.io.git HEAD:main
